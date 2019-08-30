@@ -1,0 +1,334 @@
+
+
+----------==========----------==========----------==========----------
+
+
+"Eat Your Own Catfood."
+
+
+----------==========----------==========----------==========----------
+
+
+Change Log
+
+
+2019/08/30
+
+
+BUGFIX
+
+
+	neutral/string.c
+		n_string_hex2u32() : when non-hex character is exist
+			OLD : misbehave
+			NEW : fixed
+
+	win32/win/subclass/static.c
+		removed
+			[?] : unused, unsafe
+	win32/gdi/color.c
+		n_gdi_colorref2argb() : 16bpp display mode
+			OLD : color is slightly different in some cases
+			NEW : fixed
+	win32/win/_debug.c
+		n_win_fade_is_on() : Win2000/XP
+			OLD : returns false always
+			NEW : fixed
+			[!] : SPI_GETSELECTIONFADE is needed, not SPI_GETMENUFADE
+	win32/win_combobox.c
+		when a cursor is out of an input field
+			OLD : focus frame will be released
+			NEW : fixed
+	win32/win_txtbox.c
+		undo : at the first time
+			OLD : empty
+			NEW : loaded data
+		ONELINE : bitmap cache
+			OLD : exist but not used
+			NEW : fixed
+
+	All
+		Win9x : 16bpp display mode
+			OLD : color is slightly different in some cases
+			NEW : fixed
+			[!] : n_gdi_colorref2argb() causes
+	CatPad
+		Font Chooser : when resized
+			OLD : scrollbar image remains as garbage
+			NEW : fixed
+		Win9x : Search
+			OLD : zero position is drawn for a moment
+			NEW : fixed
+		Font Chooser : when resized #1
+			OLD : tearing in a parent window happens
+			NEW : fixed
+		Font Chooser : when resized #2
+			OLD : heavy flicker
+			NEW : fixed
+	Neko no Te
+		input fields : focus frame
+			OLD : glitch in fade-out
+			NEW : fixed
+			[!] : complicated situation causes
+	Nonnon Character Map
+		search
+			OLD : scroll pager doesn't move
+			NEW : fixed
+		MinGW Version : search : enter key
+			OLD : not working
+			NEW : fixed
+	Nonnon Paint
+		Classic Style : Win9x/2000 : scroll pager thumb
+			OLD : misbahave when you use "Zoom"
+			NEW : fixed
+	Nyaurism
+		Resizer and Formatter
+			OLD : plotter is inputtable
+			NEW : fixed
+	OrangeCat
+		WinVista/7 : DWM ON : Info View : resizing
+			OLD : too heavy
+			NEW : fixed
+			[x] : TxtBox causes
+		Info View : popup menu
+			OLD : some glitch
+			NEW : fixed
+		source code : oc_item.c : n_oc_item_is_droppable_main()
+			OLD : crash sometimes
+			NEW : fixed
+		source code : oc_subclass.c : oc.msg_path_sx/sy
+			OLD : accesss violation
+			NEW : fixed
+	Pen Trainer
+		Config : when resized
+			OLD : heavy flicker
+			NEW : fixed
+
+
+NEW_FEATURE
+
+
+	game/pmr.c
+		n_game_pmr_draw()
+			OLD : function
+			NEW : macro for draw_internal()
+		n_game_pmr_calc()
+			NEW : macro for draw_internal()
+			[!] : calculation only
+
+	project/ini2gdi.c
+		Poor Man's Rasterizer(PMR)
+			NEW : supported
+
+	win32/win/subclass/txtbox.c
+		released
+			NEW : for readability with Edit Controls and TxtBox
+	win32/win/_debug.c
+		n_win_box() : parameter RECT
+			NEW : all area when NULL
+	win32/win/flickerfree.c
+		released
+			NEW : flicker-free resizing enabler
+	win32/gdi.c
+		n_gdi_bmp()
+			NEW : Poor Man's Rasterizer(PMR) is supported
+			[!] : you can use handmade font bitmaps
+	win32/win_progressbar.c
+		drawer
+			NEW : more light-weight than oldeer
+	win32/win_scrollbar.c
+		Version 7.0
+			NEW : released
+			[!] : rapid fire is re-tuned
+			[!] : fade_go() is made
+			[!] : more light-weight than older
+	win32/win_smallbutton.c
+		fade
+			NEW : global fade available
+		.fade_sink_onoff
+			NEW : not make move when pressed
+	win32/win_txtbox.c
+		13_autofocus.c : n_win_txtbox_autofocus_smart()
+			NEW : smart auto-scroll
+		N_WIN_TXTBOX_OPTION_ONELINE_FADEOUT
+			NEW : fade out when a text is empty
+		N_WIN_TXTBOX_OPTION_ONELINE_LNCACHE
+			OLD : auto
+			NEW : option
+
+	Nonnon Character Map
+		usability
+			NEW : revamped
+	Nonnon Paint
+		INI2GDI : Poor Man's Rasterizer(PMR)
+			NEW : supported
+			[!] : make unicode hex named bitmaps like "ffff.bmp"
+			[!] : put a folder name for "text_font"
+
+
+----------==========----------==========----------==========----------
+
+
+Change Log
+
+
+2019/08/20
+
+
+BUGFIX
+
+
+	neutral/vector.c
+		n_vector_safemode
+			OLD : possibility of access violation
+			NEW : removed
+			[!] : no problem in vector.c itself
+			[?] : problematic in neutral/ini.c
+
+	win32/win/txtbox/drag.c
+		n_win_txtbox_is_hovered() : ONELINE
+			OLD : below half is not acceptable
+			NEW : fixed
+		n_win_txtbox_drag_scroll()
+			OLD : last line on a screen is draggable
+			NEW : fixed
+	win32/win/darkmode.c
+		n_win_darkmode_systemcolor() : 16bpp
+			OLD : inaccurate
+			NEW : fixed
+	win32/win_filer.c
+		folders
+			OLD : modified time
+			NEW : display nothing
+			[!] : folder has no modified time information
+	win32/win_scrollbar.c
+		when ".show_onoff" has false
+			OLD : event still happens
+			NEW : fixed
+
+	All
+		INI handler
+			OLD : possibility of access violation
+			NEW : fixed
+			[?] : n_vector_safemode causes
+	CAR-RACE 2
+		program
+			OLD : not run in some cases
+			NEW : fixed
+			[?] : access violation causes
+	OrangeCat
+		Key Operation : when input : when an item is out of screen
+			OLD : not auto-scrolled 
+			NEW : fixed
+		WinVista/7 : DWM is ON : Info View : at exit
+			OLD : not beautiful / white background appears
+			NEW : fixed
+		Hover2Toottip : Info View : at exit
+			OLD : not beautiful / a tip has maximum priority
+			NEW : fixed
+		Info View : area where a scroll pager was there
+			OLD : not inputtable
+			NEW : fixed
+	Project Checker
+		reverse button : High-DPI : size
+			OLD : too large
+			NEW : fixed
+	Watchcat
+		64-bit version : minimal size
+			OLD : inaccurate
+			NEW : fixed
+
+
+NEW_FEATURE
+
+
+	neutral/bmp/draw.c
+		n_win_roundrect_coeff()
+			NEW : you can tweak round parameter
+			[?] : used for making frame
+
+	win32/gdi/frame.c
+		n_gdi_frame_roundframe_main()
+			NEW : more beautiful than older
+	win32/win/stdsize.c
+		high-DPI
+			NEW : supported
+	win32/win_txtbox/*.c
+		released
+			NEW : one file is separated into 25 files
+			[?] : an original file has more than 9000 lines
+		ONELINE
+			NEW : focus frame fade available
+		when a caret is out of canvas
+			NEW : scroll for 3 characters
+			[!] : for usability
+		IME On/Off
+			NEW : fade available
+	win32/win_smallbutton.c
+		drawer
+			NEW : fade available
+
+	nmidi
+		scroll pager
+			NEW : re-tuned
+			[!] : a little larger
+	OrangeCat
+		Key Operation : breadcrumb has key focus : Drag2Select
+			OLD : whole then fade out
+			NEW : frame only fade out
+			[!] : more natural than older
+			[!] : special code is added only for this
+		Info View : IME On/Off
+			NEW : fade available
+		Item View : round frame
+			NEW : more beautiful than older
+
+
+----------==========----------==========----------==========----------
+
+
+Change Log
+
+
+2019/08/10
+
+
+BUGFIX
+
+
+	OrangeCat
+		Item View : focus : when double-clicked : focus color setter
+			OLD : call too many times
+			NEW : fixed
+		Item View : focus : when double-clicked : n_oc_item_go()
+			OLD :    sleep()
+			NEW : no sleep()
+			[?] : sleep() causes fade glitch
+		Progress Indicator : Scroll Pager
+			OLD : not working
+			NEW : fixed
+		Item View : Drag2Select : when focus frame is shown
+			OLD : misbehave
+			NEW : fixed
+	Project Checker
+		UI : file names : margin with a reverse button
+			OLD : too narrow
+			NEW : fixed
+
+
+NEW_FEATURE
+
+
+	Marie
+		mouse gesture : mouse button
+			OLD :      click
+			NEW : menu click
+			[?] : for preventing mis-input
+	OrangeCat
+		Item View : Key Operation : focus frame color
+			OLD : dull gray
+			NEW : highlight 100%
+
+
+----------==========----------==========----------==========----------
+
