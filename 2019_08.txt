@@ -12,6 +12,68 @@
 Change Log
 
 
+2019/09/01 : Service Release
+
+
+BUGFIX
+
+
+	win32/win/stdsize.c
+		ctl
+			OLD : do nothing
+			NEW : round to even number
+	win32/txtbox.c
+		size
+			OLD : do nothing
+			NEW : round to even number
+		N_WIN_TXTBOX_STYLE_CMB_BDR
+			OLD : frame size is not calculated
+			NEW : fixed
+		selected area
+			OLD : do nothing
+			NEW : round to even number
+	win32/win_combobox.c
+		n_win_combo_exit() : popup
+			OLD : not disappear
+			NEW : fixed
+		drawer
+			OLD : border offset is ignored
+			NEW : fixed
+	win32/win_smallbutton.c
+		Classic Style
+			OLD : shift by 1px
+			NEW : fixed
+
+	nmixer
+		with system volume
+			OLD : shift by 1%
+			NEW : fixed
+	Nyaurism
+		Formatter : when cancelled : combo is opened
+			OLD : not disappear
+			NEW : fixed
+			[x] : win32/win_combobox.c causes
+
+
+NEW_FEATURE
+
+
+	win32/win_txtbox.c
+		usability feature : edge of a screen
+			OLD : arrow key only
+			NEW : mouse click available
+
+	Watchcat
+		process list
+			NEW : more light-weight than older
+
+
+----------==========----------==========----------==========----------
+
+
+Change Log
+
+
 2019/08/30
 
 
