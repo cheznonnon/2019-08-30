@@ -12,6 +12,63 @@
 Change Log
 
 
+2019/09/02 : Recall : Release #2
+
+
+BUGFIX
+
+
+	win32/win_checkbox.c
+		high-DPI : alignment
+			OLD : inaccurate
+			NEW : fixed
+			[!] : logic is re-tuned
+			[x] : BUGFIX @ 2019/09/01
+		fade
+			OLD : not wroking
+			NEW : fixed
+	win32/win_radiobutton.c
+		high-DPI : alignment
+			OLD : inaccurate
+			NEW : fixed
+			[!] : logic is re-tuned
+			[x] : BUGFIX @ 2019/09/01
+		high-DPI : when under 200%
+			OLD : not beautiful
+			NEW : fixed
+			[!] : original renderer implemented
+		fade
+			OLD : not wroking
+			NEW : fixed
+
+	Nonnon Freecell
+		usability : click and double-click
+			OLD : glitch sometimes
+			NEW : fixed
+		Win10 : light theme
+			OLD : broken image at launch
+			NEW : fixed
+	Nonnon Spider
+		Win10 : light theme
+			OLD : broken image at launch
+			NEW : fixed
+
+
+NEW_FEATURE
+
+
+	win32/win/dwm.c
+		Win10 : n_win_dwm_windowcolor()
+			NEW : sets alpha visible (255)
+			[x] : for Win10 1903 light mode
+
+
+----------==========----------==========----------==========----------
+
+
+Change Log
+
+
 2019/09/01 : Service Release
 
 
@@ -44,6 +101,10 @@ BUGFIX
 			OLD : shift by 1px
 			NEW : fixed
 
+	Nonnon Apps
+		Attrib GUI : Win2000 : commandline
+			OLD : handle as invalid
+			NEW : fixed
 	nmixer
 		with system volume
 			OLD : shift by 1%
@@ -63,6 +124,9 @@ NEW_FEATURE
 			OLD : arrow key only
 			NEW : mouse click available
 
+	Attrib GUI
+		file name
+			NEW : move to tail
 	Watchcat
 		process list
 			NEW : more light-weight than older
